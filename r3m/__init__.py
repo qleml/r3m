@@ -42,7 +42,7 @@ def remove_language_head(state_dict):
     return state_dict
 
 def load_r3m(modelid):
-    base = os.path.join(os.getcwd(), ".r3m")
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".r3m")
     if modelid == "resnet50":
         foldername = "r3m_50"
         modelurl = 'https://drive.google.com/uc?id=1Xu0ssuG0N1zjZS54wmWzJ7-nb0-7XzbA'
@@ -75,7 +75,7 @@ def load_r3m(modelid):
     return rep
 
 def load_r3m_reproduce(modelid):
-    base = os.path.join(os.getcwd(), ".r3m")
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".r3m")
     if modelid == "r3m":
         foldername = "original_r3m"
         modelurl = 'https://drive.google.com/uc?id=1jLb1yldIMfAcGVwYojSQmMpmRM7vqjp9'
