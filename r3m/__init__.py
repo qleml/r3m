@@ -42,7 +42,7 @@ def remove_language_head(state_dict):
     return state_dict
 
 def load_r3m(modelid):
-    home = os.path.join(expanduser("~"), ".r3m")
+    base = os.path.join(os.getcwd(), ".r3m")
     if modelid == "resnet50":
         foldername = "r3m_50"
         modelurl = 'https://drive.google.com/uc?id=1Xu0ssuG0N1zjZS54wmWzJ7-nb0-7XzbA'
@@ -58,10 +58,10 @@ def load_r3m(modelid):
     else:
         raise NameError('Invalid Model ID')
 
-    if not os.path.exists(os.path.join(home, foldername)):
-        os.makedirs(os.path.join(home, foldername))
-    modelpath = os.path.join(home, foldername, "model.pt")
-    configpath = os.path.join(home, foldername, "config.yaml")
+    if not os.path.exists(os.path.join(base, foldername)):
+        os.makedirs(os.path.join(base, foldername))
+    modelpath = os.path.join(base, foldername, "model.pt")
+    configpath = os.path.join(base, foldername, "config.yaml")
     if not os.path.exists(modelpath):
         gdown.download(modelurl, modelpath, quiet=False)
         gdown.download(configurl, configpath, quiet=False)
@@ -75,7 +75,7 @@ def load_r3m(modelid):
     return rep
 
 def load_r3m_reproduce(modelid):
-    home = os.path.join(expanduser("~"), ".r3m")
+    base = os.path.join(os.getcwd(), ".r3m")
     if modelid == "r3m":
         foldername = "original_r3m"
         modelurl = 'https://drive.google.com/uc?id=1jLb1yldIMfAcGVwYojSQmMpmRM7vqjp9'
@@ -95,10 +95,10 @@ def load_r3m_reproduce(modelid):
     else:
         raise NameError('Invalid Model ID')
 
-    if not os.path.exists(os.path.join(home, foldername)):
-        os.makedirs(os.path.join(home, foldername))
-    modelpath = os.path.join(home, foldername, "model.pt")
-    configpath = os.path.join(home, foldername, "config.yaml")
+    if not os.path.exists(os.path.join(base, foldername)):
+        os.makedirs(os.path.join(base, foldername))
+    modelpath = os.path.join(base, foldername, "model.pt")
+    configpath = os.path.join(base, foldername, "config.yaml")
     if not os.path.exists(modelpath):
         gdown.download(modelurl, modelpath, quiet=False)
         gdown.download(configurl, configpath, quiet=False)
